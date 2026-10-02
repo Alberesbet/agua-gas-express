@@ -1,0 +1,18 @@
+IMPLANTAR AS NOTIFICACOES — VERSAO 2.9
+
+ATENCAO: as funcoes abaixo precisam estar publicadas no Firebase para que o push funcione com o app fechado.
+
+1. Abra um terminal na pasta raiz do projeto (a pasta que contem firebase.json).
+2. Confirme que o Firebase CLI esta instalado e autenticado.
+3. Confira o projeto selecionado: agua-e-gas-express.
+4. Entre na pasta functions e instale as dependencias: npm install
+5. Volte a pasta raiz e implante: firebase deploy --only functions
+
+Funcoes nesta versao:
+- notifyNewOrder: avisa pedidos em dinheiro ao serem criados.
+- notifyPixReported: avisa a administracao somente quando pixReported passa para true.
+- notifyCustomerArrival: envia “Seu pedido chegou” quando o status muda para “Chegou ao endereço”, usando customerFcmToken gravado no pedido.
+
+Cloud Functions pode exigir o plano Blaze e faturamento associado. Confira os custos e a configuracao do projeto antes de habilitar faturamento. Nao publique regras abertas para compensar falhas de notificacao.
+
+Para testar o cliente, crie um pedido novo depois de instalar a versao 2.9, para que o pedido contenha o token FCM atual. Pedidos antigos sem customerFcmToken nao recebem o push de chegada.

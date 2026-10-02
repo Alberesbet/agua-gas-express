@@ -1,0 +1,32 @@
+// MODELO FUTURO — NÃO PUBLICAR AINDA.
+// Exige custom claims emitidas por um servidor confiável (admin/delivery).
+// O app atual usa autenticação anônima e senha local; ainda não emite essas claims.
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() { return request.auth != null; }
+    function isAdmin() { return signedIn() && request.auth.token.admin == true; }
+    function isDelivery() { return signedIn() && request.auth.token.delivery == true; }
+
+    match /orders/{orderId} {
+      allow create: if signedIn()
+        && request.resource.data.customerUid == request.auth.uid
+        && request.resource.data.status == 'Pendente'
+        && request.resource.data.demo != true;
+      allow read: if signedIn() && (
+        resource.data.customerUid == request.auth.uid || isAdmin() || isDelivery()
+      );
+      allow update: if signedIn() && (
+        isAdmin() || isDelivery() ||
+        (resource.data.customerUid == request.auth.uid &&
+         request.resource.data.diff(resource.data).affectedKeys().hasOnly(['pixReported']))
+      );
+      allow delete: if isAdmin();
+    }
+
+    match /appConfig/{configId} {
+      allow read: if signedIn();
+      allow write: if isAdmin();
+    }
+  }
+}

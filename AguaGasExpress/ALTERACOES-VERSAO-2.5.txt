@@ -1,0 +1,16 @@
+ÁGUA & GÁS EXPRESS — VERSÃO 2.5 (Firebase + ajustes de pedidos e entregas)
+
+ALTERAÇÕES DESTA VERSÃO
+- O aviso de voz “Chegou mais um pedido!” é verificado diretamente quando o Firestore recebe/atualiza a lista de pedidos pendentes no aparelho administrativo, sem depender de abrir a tela Pedidos Recebidos nem de confirmar o pagamento.
+- Adicionada a opção “CANCELAR ENTREGA” no modo Entregador para pedidos autorizados, em andamento ou com chegada registrada.
+- Ao cancelar, o pedido recebe status “Cancelado”, sai da lista ativa do entregador e permanece no histórico sincronizado para consulta administrativa.
+- Mantidos o applicationId com.example.aguagasexpress e o desenho das telas aprovadas.
+
+OBSERVAÇÃO IMPORTANTE SOBRE AVISOS
+Este ajuste usa o listener do Firestore enquanto o processo do aplicativo está ativo e também anuncia pedidos pendentes quando o administrador abre o aplicativo. Ele não cria, por si só, uma notificação push garantida quando o Android encerra o aplicativo/processo. Para aviso confiável com o app totalmente fechado, será necessário configurar Firebase Cloud Messaging e um serviço de envio no servidor (por exemplo, Cloud Functions), além de testar permissões de notificações no Android.
+
+FIRESTORE RULES
+O arquivo firestore.rules continua com regras temporárias de teste para validar a sincronização. Não publique o aplicativo para clientes reais usando essas regras abertas. As regras finais precisam ser definidas e publicadas separadamente antes do uso público.
+
+COMPILAÇÃO
+Este arquivo é o projeto-fonte para abrir no Android Studio; não é um APK. A compilação precisa ser feita no Android Studio com as dependências Gradle/Firebase disponíveis. Não declare esta versão compilada/testada até executar uma compilação bem-sucedida.

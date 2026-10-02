@@ -1,0 +1,15 @@
+ÁGUA & GÁS EXPRESS 2.6 — LEIA ANTES DE TESTAR
+
+1. Abra esta pasta no Android Studio e aguarde a sincronização Gradle.
+2. Confira que applicationId permanece com.example.aguagasexpress.
+3. No Firebase projeto agua-e-gas-express, habilite Authentication anônimo e crie Cloud Firestore.
+4. Abra a versão 2.6 no aparelho administrativo pelo menos uma vez com internet para registrar o token FCM.
+5. Para teste entre dois aparelhos, publique temporariamente o arquivo firestore.rules. Ele permite que qualquer usuário autenticado anonimamente leia/alter pedidos e configuração; use apenas em teste controlado.
+6. Instale a mesma compilação nos aparelhos cliente e administrativo. Faça um pedido novo e veja se ele aparece em Pedidos recebidos.
+7. Para aviso com o app fechado, é necessário implantar a Cloud Function da pasta functions. Isso exige Firebase CLI e, em geral, o plano Blaze com faturamento. O APK não consegue executar sozinho a função de servidor.
+7. Com Firebase CLI configurado para o projeto: firebase use agua-e-gas-express; cd functions; npm install; cd ..; firebase deploy --only functions.
+9. Conceda permissão de notificações no Android e teste com o app administrativo em segundo plano e depois fechado.
+
+Não publique o app para clientes reais usando as regras temporárias. O template firestore.rules.producao-template ainda depende de custom claims e não está pronto para substituir as regras de teste.
+
+Esta pasta é o projeto-fonte; não é um APK e a compilação ainda precisa ser verificada no Android Studio.

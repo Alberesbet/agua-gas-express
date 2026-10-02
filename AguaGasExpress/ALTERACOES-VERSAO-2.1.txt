@@ -1,0 +1,16 @@
+ÁGUA & GÁS EXPRESS — VERSÃO 2.1
+
+Alterações desta versão:
+- Mantida a área de entregas da versão 2.0 sem alterações de interface ou fluxo.
+- Administração do Pix agora permite cadastrar o nome completo do recebedor e a chave Pix.
+- Tela do cliente exibe “Pix para [nome]” junto da chave, para conferir o destinatário antes de pagar.
+- Nome das águas Estrela, Safira e Diamantina pode ocupar duas linhas para não esconder Diamantina.
+- Cliente vê “Seu pedido saiu para entrega” quando o pedido estiver com status Em entrega.
+- Ao existir pedido com status “Chegou ao endereço” nos dados locais, o cliente vê a mensagem “Sua entrega chegou! O entregador está no seu endereço. Venha receber seu pedido.” e o aparelho tenta tocar o som padrão de notificação.
+- Removida da área de fidelidade do cliente a contagem e a barra de progresso do gás. A promoção “Compre 1 gás e ganhe 1 água!” permanece. O progresso de águas permanece.
+
+LIMITAÇÕES IMPORTANTES:
+- Os pedidos continuam salvos localmente. Sem comunicação online entre aparelhos, o cliente em outro celular não recebe automaticamente o status de saída/chegada nem o som. Para isso será necessário integrar os dois aplicativos a um serviço online compartilhado.
+- O som local só pode ocorrer quando o status de chegada existir nos dados que o app do cliente consegue ler neste aparelho; não é uma notificação remota.
+- O Pix não é validado automaticamente pelo banco e não movimenta dinheiro.
+- A compilação não pôde ser verificada nesta sessão: o Gradle Wrapper precisou baixar Gradle 9.4.1, mas a conexão a services.gradle.org falhou. Abra no Android Studio com internet, sincronize e faça Build APK(s).

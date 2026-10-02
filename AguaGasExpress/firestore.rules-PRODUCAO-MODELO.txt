@@ -1,0 +1,3 @@
+NÃO PUBLICAR ESTE MODELO AINDA.
+O app usa autenticação anônima e senhas locais; não implementa custom claims confiáveis para admin/entregador.
+O modelo de produção precisa ser concluído junto com uma autenticação segura no servidor antes de ser publicado.

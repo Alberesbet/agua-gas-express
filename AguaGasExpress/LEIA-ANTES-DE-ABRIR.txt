@@ -1,0 +1,37 @@
+ÁGUA & GÁS EXPRESS — VERSÃO 2.7 (PROJETO-FONTE)
+
+MANTIDO
+- applicationId: com.example.aguagasexpress
+- Código inicial para autorizar criação da senha administrativa: 160829
+- Telas principais e visual aprovado
+- Opção CANCELAR ENTREGA
+
+NOVO NESTA VERSÃO
+- Administração pode acrescentar produto/marca, editar preço e apagar produto.
+- O catálogo completo (nome, preço e tipo água/gás) é salvo localmente e publicado em appConfig/main para sincronizar nos celulares.
+- O catálogo não volta a inserir automaticamente marcas que foram apagadas.
+- Ao apagar um produto, o histórico de pedidos antigos é preservado.
+- O envio do pedido tenta autenticar anonimamente antes de escrever no Firestore, em vez de falhar silenciosamente se a autenticação ainda não terminou.
+- O aviso de pedido continua sendo disparado por uma Cloud Function quando um documento real novo é criado com status Pendente; ele não espera a confirmação do pagamento.
+
+ANTES DE TESTAR OS DOIS CELULARES
+1. No Firebase Console do projeto agua-e-gas-express, abra Authentication > Sign-in method e habilite Anonymous.
+2. Em Firestore Database > Regras, cole o conteúdo de firestore.rules e clique em Publicar. Essas regras são SOMENTE para teste controlado: qualquer instalação autenticada pode ler/alterar pedidos e configuração. Não publique o app para clientes reais com essas regras.
+3. Confirme que ambos os celulares estão com internet e com esta mesma compilação.
+4. Abra primeiro o app no celular administrativo, entre na Administração, e mantenha as notificações permitidas nas configurações do Android. Isso registra o token FCM administrativo em appConfig/main.
+5. Teste: cadastre/salve a chave Pix e um produto na Administração; confira no Firestore se existe appConfig/main com pixKey, pixRecipientName e productsJson. No outro celular, volte à tela inicial e entre novamente em Cliente para receber a atualização.
+6. Faça um pedido NOVO. O documento deve aparecer em Firestore > orders antes de o administrador confirmar pagamento. Se não aparecer, confira o texto de estado Firebase mostrado na tela Administração e as regras publicadas.
+
+AVISO DE VOZ COM O APLICATIVO FECHADO
+A pasta functions contém notifyNewOrder. Para que o aviso chegue com o app fechado, é necessário implantar a Cloud Function no projeto Firebase. Em geral, implantação de Cloud Functions exige plano Blaze com faturamento vinculado. O projeto-fonte não consegue publicar a função sozinho.
+Com Firebase CLI instalado e autenticado, na pasta do projeto execute:
+  firebase deploy --only firestore:rules,functions
+Se o projeto estiver no plano Spark, a função de push pode não ser implantável; nesse caso, a sincronização/listener só funciona quando o app está aberto, e não há garantia de aviso em segundo plano.
+
+IMPORTANTE SOBRE O REGISTRO ANDROID DO FIREBASE
+O applicationId deste projeto é com.example.aguagasexpress. O google-services (3).json fornecido anteriormente não contém um registro com esse package exatamente: um registro está como com.axample.aguagasexpress (erro de digitação) e outro como com.example.aguagas. A versão mantém o applicationId original e aponta para o registro mais próximo já existente, mas o FCM pode continuar falhando até o registro Android no Firebase corresponder exatamente a com.example.aguagasexpress. Não altere o applicationId do app para contornar isso, pois o Android trataria como outro aplicativo.
+
+SEGURANÇA
+- firestore.rules atual é somente para teste.
+- firestore.rules-PRODUCAO-MODELO.txt não deve ser publicado; a autenticação segura dos papéis admin/entregador ainda precisa ser implementada no servidor.
+- Este ZIP contém código-fonte, não APK compilado. A compilação deve ser confirmada no Android Studio antes da instalação.

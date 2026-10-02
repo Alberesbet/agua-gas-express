@@ -1,0 +1,16 @@
+ÁGUA & GÁS EXPRESS — VERSÃO 2.9 (projeto-fonte)
+
+Alterações desta versão:
+1. O aviso Pix para a administração só é disparado quando pixReported muda para true (botão verde).
+2. Pedidos em dinheiro continuam notificando a administração quando são criados.
+3. A tela cliente aplica imePadding para o campo de troco subir junto com o teclado.
+4. O token FCM do aparelho cliente é guardado localmente e copiado para o pedido.
+5. A função notifyCustomerArrival envia “Seu pedido chegou” quando o entregador muda o status para “Chegou ao endereço”.
+6. O serviço FCM recebe os tipos new_order, pix_reported e customer_arrived.
+
+IMPORTANTE:
+- Este ZIP é código-fonte, não APK compilado.
+- As Cloud Functions precisam ser implantadas no projeto Firebase correto antes de os avisos em segundo plano funcionarem.
+- O push para o cliente exige que o token FCM esteja registrado no documento do pedido. Em pedidos criados antes desta versão, o campo customerFcmToken pode estar vazio.
+- Teste em aparelhos de teste antes de usar com pedidos reais.
+- As regras temporárias de Firestore não foram alteradas nesta versão.

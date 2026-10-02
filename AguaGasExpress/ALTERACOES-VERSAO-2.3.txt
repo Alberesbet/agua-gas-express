@@ -1,0 +1,20 @@
+ÁGUA & GÁS EXPRESS — VERSÃO 2.3 (PACOTE DE AJUSTES DE INTERFACE)
+
+Alterações incluídas neste pacote:
+1. Código inicial de autorização administrativa alterado para 160829 (seis dígitos). Se a instalação anterior guardava o código padrão antigo AGX-583941, ele é migrado para 160829. Senhas administrativas já criadas continuam separadas do código de autorização.
+2. Produtos separados na lista: Estrela, Safira, Diamantina, Cristalina, Santa Maria, Santa Joana e Gás. Os preços anteriores são preservados quando possível; confira os valores em Administração > Produtos e preços.
+3. Itens no painel administrativo exibidos em pequenos quadros verdes/azuis, com nome e quantidade.
+4. Numeração sequencial local dos pedidos: 01, 02, 03... Os pedidos de teste ficam identificados como teste.
+5. Botão vermelho CANCELAR PEDIDO no topo do cartão do pedido recebido. Pedido cancelado fica registrado no histórico, não é enviado para entregas e não aparece na lista/rota do entregador.
+6. Os controles inferiores existentes foram preservados: confirmar Pix/dinheiro e, depois, autorizar/enviar para entregas.
+7. No cliente, o cartão de status foi reduzido e passa a mostrar: aguardando aceitação, pedido aceito, saiu para entrega, entregador chegou, pedido entregue ou pedido cancelado.
+8. Espaçamento e tamanho do cabeçalho do cliente reduzidos para ganhar espaço.
+9. Após copiar a chave Pix e registrar o pedido, aparece perto do total o botão JÁ FIZ O PAGAMENTO PIX. Ele apenas informa que o cliente diz ter pago; a administração ainda deve conferir o banco e confirmar o recebimento.
+10. Removido o bloco de simulação local de pagamento Pix da tela do cliente.
+11. A promoção das 10 águas considera apenas pedidos concluídos/entregues; pedidos pendentes e cancelados não contam. O progresso reinicia visualmente a cada 10 águas entregues.
+12. Preparado aviso por voz “Chegou mais um pedido!” (com som alternativo se a voz não iniciar) quando um novo pedido pendente for detectado na tela de pedidos recebidos deste aparelho.
+
+IMPORTANTE — LIMITAÇÃO CONHECIDA:
+Esta versão ainda guarda os pedidos localmente em cada aparelho. Portanto, ela ainda NÃO sincroniza automaticamente pedidos entre o celular do cliente e o administrativo, e o aviso sonoro/voz ainda não é uma notificação remota nem funciona garantidamente com o aplicativo fechado. A etapa seguinte é conectar os aparelhos ao serviço compartilhado/Firebase e validar a sincronização e alertas em segundo plano.
+
+Antes de usar em produção, abrir o projeto no Android Studio, sincronizar Gradle, compilar e testar em aparelhos. A compilação não pôde ser validada neste ambiente porque o Gradle Wrapper precisou baixar uma distribuição da internet e a conexão de rede não estava disponível.

@@ -1,0 +1,12 @@
+VERSÃO 2.2 — Água & Gás Express
+
+Alterações nesta revisão:
+- No painel do cliente, o progresso da promoção de água mostra o avanço para a próxima meta (contador de 0 a 9, reiniciando a cada 10 unidades compradas). O histórico administrativo mantém a contagem acumulada das águas.
+- Adicionada uma caixa de status do pedido para mostrar se está pendente ou aguardando saída para entrega, além dos avisos de saída/chegada já previstos.
+- O acesso do entregador agora pede senha desde a primeira instalação. Senha inicial: ENT-583941.
+- Na área administrativa foi adicionada a opção “Senha fixa do entregador”, para definir uma senha nova neste aparelho.
+
+Limitações importantes:
+- Os dados continuam locais a cada aparelho. Para o status de saída e o aviso sonoro chegarem automaticamente a um celular de cliente diferente, é necessário configurar comunicação online compartilhada entre os aparelhos.
+- A senha padrão ENT-583941 só vale numa instalação nova. Se o administrador alterar a senha, ela fica salva localmente no aparelho administrativo e não se propaga para outros aparelhos sem sincronização online.
+- A compilação ainda precisa ser validada no Android Studio com Gradle sincronizado.

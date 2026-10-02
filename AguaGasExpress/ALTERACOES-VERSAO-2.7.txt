@@ -1,0 +1,12 @@
+ÁGUA & GÁS EXPRESS — VERSÃO 2.7
+
+- Catálogo de produtos gerenciável pela Administração: acrescentar produto/marca, escolher tipo Água/Gás, editar preço e apagar com confirmação.
+- Catálogo sincronizado por appConfig/main via Firestore; cliente mostra os produtos ativos recebidos do Firebase.
+- Migração do catálogo corrigida para preservar as marcas apagadas em vez de reconstruir sempre a lista padrão.
+- Pedidos continuam sincronizados em orders; envio tenta garantir autenticação anônima antes da escrita, reduzindo o risco de ficar somente no armazenamento local.
+- Mantido o cancelamento de entrega.
+- Mantido o aviso por voz local quando um pedido novo chega enquanto o app administrativo está aberto.
+- Incluídos regras temporárias de teste e a Cloud Function de notificação de pedido novo.
+- A notificação com app fechado depende de a Cloud Function estar implantada e do registro Firebase Android/FCM estar correto.
+- applicationId mantido como com.example.aguagasexpress; código inicial administrativo 160829.
+- Não compilado/testado por Gradle nesta preparação; validar no Android Studio antes de instalar.

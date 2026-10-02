@@ -1,0 +1,8 @@
+VERSÃO 2.4 — CONEXÃO ENTRE CELULARES
+1. Adicionado Firebase Authentication anônimo.
+2. Adicionado listener em tempo real de pedidos no Cloud Firestore.
+3. Sincronização de pedidos e estados entre Cliente, Administração e Entregador.
+4. Sincronização dos preços e dados Pix da Administração para a área Cliente.
+5. Adicionada permissão de internet.
+6. Mantido o package/applicationId original do projeto.
+7. Incluídos firestore.rules e instruções de configuração.

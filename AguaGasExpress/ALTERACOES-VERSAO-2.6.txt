@@ -1,0 +1,26 @@
+ÁGUA & GÁS EXPRESS — VERSÃO 2.6
+
+ALTERAÇÕES
+- Mantidas as telas e o applicationId com.example.aguagasexpress.
+- Mantida a opção CANCELAR ENTREGA: muda o estado para Cancelado, sincroniza pelo Firestore e remove a entrega da lista ativa do entregador; o registro permanece no histórico administrativo.
+- O app registra o token FCM do aparelho administrativo em appConfig/main.
+- Incluído serviço Android para receber mensagens FCM de novos pedidos, mostrar notificação sonora e tentar anunciar por voz “Chegou mais um pedido!”.
+- Incluída Cloud Function notifyNewOrder, acionada quando um documento novo é criado em orders com status Pendente. Ela não espera confirmação de pagamento.
+- Corrigido o texto antigo que dizia que pedidos não eram enviados pela internet.
+- Atualizado versionCode para 5 e versionName para 2.6.
+
+IMPORTANTE — O QUE AINDA PRECISA SER FEITO NO FIREBASE
+1. Habilitar Authentication > Sign-in method > Anonymous.
+2. Criar o Firestore e publicar as regras temporárias de teste incluídas em firestore.rules. Essas regras são abertas para qualquer usuário autenticado anonimamente e servem só para teste controlado; não divulgar o app com elas.
+3. Para avisos com o app fechado, instalar/deploy a função em functions/. A implantação de Cloud Functions normalmente exige que o projeto Firebase esteja no plano Blaze e tenha faturamento vinculado; não é possível ativar o disparo do servidor apenas pelo APK.
+5. No computador com Firebase CLI: firebase use agua-e-gas-express; cd functions; npm install; cd ..; firebase deploy --only functions.
+6. No Android, permitir notificações para o app. Em Android 13 ou superior, o app solicita essa permissão ao iniciar.
+7. Fazer teste com dois aparelhos reais e internet. O arquivo ZIP contém código-fonte; não é um APK compilado.
+
+REGRAS DE PRODUÇÃO
+O arquivo firestore.rules.producao-template é apenas um modelo futuro e NÃO deve ser publicado ainda. Ele depende de custom claims admin/delivery emitidas por um servidor confiável, funcionalidade que ainda não está implementada no app. Não publique regras de produção sem completar essa autenticação de papéis.
+
+LIMITES DO TESTE
+- Se o plano Firebase permanecer Spark, a função de servidor para push pode não ser implantável; o listener dentro do app continua sendo o fallback quando o app está aberto/ativo.
+- Notificações e fala por voz dependem das permissões do Android, do Google Play Services e das configurações de som do aparelho.
+- A compilação precisa ser confirmada no Android Studio; não afirmar que foi compilado até executar assembleDebug com sucesso.
