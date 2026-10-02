@@ -1,31 +1,153 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#176b48">
-<title>Água &amp; Gás Express — Downloads</title>
-<style>
-:root{--green:#176b48;--dark:#123d32;--pale:#eff7f1;--ink:#18352b}
-*{box-sizing:border-box}body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:linear-gradient(150deg,#edf7ef,#f8fbf8 55%,#e4f2e8)}
-main{width:min(100%,480px);background:white;border-radius:28px;padding:32px 24px;box-shadow:0 18px 55px #123d321f;text-align:center}
-.mark{width:88px;height:88px;margin:0 auto 18px;border-radius:24px;background:var(--pale);display:grid;place-items:center;font-size:42px}
-h1{margin:0;color:var(--dark);font-size:clamp(25px,6vw,34px);line-height:1.15}.sub{color:#5c7167;line-height:1.55;margin:12px 0 26px}
-.btn{display:flex;align-items:center;justify-content:center;gap:12px;width:100%;padding:16px 18px;margin:12px 0;border-radius:14px;text-decoration:none;font-weight:750;font-size:16px}
-.android{background:var(--green);color:white}.ios{background:#202124;color:white}.disabled{opacity:.72;cursor:default}
-.note{font-size:12px;color:#6b7d74;line-height:1.5;margin:18px 0 0}footer{margin-top:22px;font-size:12px;color:#809087}
-</style></head>
-<body><main>
-<div class="mark" aria-hidden="true">💧</div>
-<h1>Água &amp; Gás Express</h1>
-<p class="sub">Peça água e gás com praticidade, direto pelo celular.</p>
-<!-- Troque https://github.com/Alberesbet/agua-gas-express/raw/refs/heads/main/app-debug.apk pelo link público real do APK. -->
-<a class="btn android" href="https://github.com/Alberesbet/agua-gas-express/raw/refs/heads/principal/Natan_AGUA%20%26%20GAS-07%20%282%29.apk" id="androidButton">⬇ &nbsp; Baixar para Android</a>
-<a class="btn ios disabled" href="#ios" aria-disabled="true">● &nbsp; Versão para iPhone em preparação</a>
-<p class="note" id="androidNote">O botão Android precisa ser ligado ao arquivo APK publicado para download.</p>
-<p class="note">A versão para iPhone ainda não está disponível. O APK Android não pode ser instalado no iPhone; a versão iOS precisa ser criada e publicada separadamente.</p>
-<footer>Água &amp; Gás Express</footer>
-</main>
-<script>
-const a=document.getElementById('androidButton');
-if(a.getAttribute('href')==='https://github.com/Alberesbet/agua-gas-express/raw/refs/heads/main/app-debug.apk'){a.addEventListener('click',function(e){e.preventDefault();alert('O link do APK ainda precisa ser configurado antes de publicar esta página.');});}
-</script></body></html>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <meta name="theme-color" content="#176b48">
+
+  <title>Água & Gás Express - Downloads</title>
+
+  <style>
+    :root {
+      --verde: #176b48;
+      --escuro: #123d32;
+      --fundo: #eff7f1;
+      --texto: #18352b;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: var(--fundo);
+      color: var(--texto);
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    main {
+      width: 100%;
+      max-width: 650px;
+      padding: 36px 24px;
+      text-align: center;
+      background: white;
+      border-radius: 24px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    .logo {
+      width: 88px;
+      height: 88px;
+      margin: 0 auto 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 24px;
+      background: var(--fundo);
+      font-size: 52px;
+    }
+
+    h1 {
+      margin: 0;
+      color: var(--escuro);
+      font-size: 30px;
+    }
+
+    .subtitulo {
+      margin: 18px 0 36px;
+      color: #5c7167;
+      line-height: 1.6;
+    }
+
+    .botao {
+      display: block;
+      width: 100%;
+      margin: 12px 0;
+      padding: 20px 16px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-size: 17px;
+      font-weight: bold;
+    }
+
+    .android {
+      background: var(--verde);
+      color: white;
+    }
+
+    .iphone {
+      background: #243b67;
+      color: white;
+      opacity: 0.72;
+      cursor: default;
+    }
+
+    .aviso {
+      margin: 18px 0;
+      color: #6b7d74;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    footer {
+      margin-top: 28px;
+      color: #829087;
+      font-size: 12px;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <div class="logo">💧</div>
+
+    <h1>Água &amp; Gás Express</h1>
+
+    <p class="subtitulo">
+      Peça água e gás com praticidade,
+      direto pelo celular.
+    </p>
+
+    <a
+      class="botao android"
+      href="https://raw.githubusercontent.com/Alberesbet/agua-gas-express/main/app-debug.apk"
+      id="androidButton"
+    >
+      ⬇ Baixar para Android
+    </a>
+
+    <a
+      class="botao iphone"
+      href="#"
+      aria-disabled="true"
+      onclick="return false;"
+    >
+      ● Versão para iPhone em preparação
+    </a>
+
+    <p class="aviso">
+      Toque em “Baixar para Android” para baixar
+      o arquivo APK. Depois, abra o arquivo no
+      celular Android para instalar.
+    </p>
+
+    <p class="aviso">
+      A versão para iPhone ainda não está disponível.
+      O aplicativo iOS precisa ser desenvolvido
+      e publicado separadamente.
+    </p>
+
+    <footer>
+      Água &amp; Gás Express
+    </footer>
+  </main>
+</body>
+</html>
